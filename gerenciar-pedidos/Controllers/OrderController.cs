@@ -142,7 +142,7 @@ namespace gerenciar_pedidos.Controllers
 
 
 
-         [HttpGet("/{id}")]
+         [HttpGet("order/{id}")]
         public async Task<IActionResult> GetOrderById(int id){
 
             var order = await _context.Orders
@@ -173,7 +173,7 @@ namespace gerenciar_pedidos.Controllers
         }
 
 
-        [HttpGet]
+        [HttpGet("orders")]
         public async Task<IActionResult> GetAllOrders(){
             
             var orders = await _context.Orders
