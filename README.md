@@ -34,34 +34,30 @@ Este projeto é uma aplicação de gerenciamento de pedidos com funcionalidades 
 
 ```
 {
-  "orderDate": "2024-07-24T17:30:00Z",
-  "isClosed": false,
+  "orderId": 0,
+  "orderDate": "2024-07-26T13:10:11.820Z",
+  "isClosed": true,
   "orderDetails": [
     {
-      "productId": 1,
-      "quantity": 3
-    },
-    {
-      "productId": 2,
-      "quantity": 5
+      "productId": 0, //deixar vazio
+      "productName": "string", 
+      "quantity": 0, 
+      "unitPrice": 0 //deixar vazio
     }
-  ]
+  ],
+  "totalPrice": 0 //deixar vazio
 }
 ```
 >PUT /orders/{id}
 
 ```
 {
-  "orderDate": "2024-07-24T17:30:00Z",
-  "isClosed": false,
   "orderDetails": [
     {
-      "productId": 1,
-      "quantity": 10
-    },
-    {
-      "productId": 2,
-      "quantity": 0
+      "productId": 0,  //deixar vazio
+      "productName": "string",
+      "quantity": 0,
+      "unitPrice": 0 //deixar vazio
     }
   ]
 }
@@ -87,7 +83,7 @@ DELETE /orders/{id}
 
 ```
 {
-  "productName": "dj",
+  "productName": "Nome do Produto",
   "price": 10,
   "orderDetails": []
 }
