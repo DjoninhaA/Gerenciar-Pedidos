@@ -1,5 +1,6 @@
 # Desafio Técnico - Gerenciamento de Pedidos
 > Descrição
+
 Este projeto é uma aplicação de gerenciamento de pedidos com funcionalidades de CRUD (Create, Read, Update, Delete) e suporte a filtros e paginação. O objetivo é demonstrar habilidades de desenvolvimento com ASP.NET Core, Entity Framework Core e práticas de design de APIs RESTful.
 
 ## Funcionalidades
@@ -16,10 +17,15 @@ Este projeto é uma aplicação de gerenciamento de pedidos com funcionalidades 
 ## Tecnologias Utilizadas
 
 
-ASP.NET Core: Framework para desenvolvimento da API.
-Entity Framework Core: ORM para acesso ao banco de dados.
-SQL Server/MySQL: Banco de dados para armazenamento de dados.
-DTOs: Data Transfer Objects para transferência de dados entre camadas.
+* ASP.NET Core: Framework para desenvolvimento da API.
+
+* Entity Framework Core: ORM para acesso ao banco de dados.
+
+* SQL Server/MySQL: Banco de dados para armazenamento de dados.
+
+* DTOs: Data Transfer Objects para transferência de dados entre camadas.
+  
+* Swagger: Para documentação da API.
 
 
 ## Endpoints 
