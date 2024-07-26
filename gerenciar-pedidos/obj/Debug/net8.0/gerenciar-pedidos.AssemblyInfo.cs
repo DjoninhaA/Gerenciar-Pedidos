@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("gerenciar-pedidos")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d5b827551bbbe3800452de11e0bc836e4cdad9a2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+53c574f55aa6ce94c15fd6639e034ef9d73cff78")]
 [assembly: System.Reflection.AssemblyProductAttribute("gerenciar-pedidos")]
 [assembly: System.Reflection.AssemblyTitleAttribute("gerenciar-pedidos")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
