@@ -132,7 +132,7 @@ namespace gerenciar_pedidos.Controllers
                 }
             }
 
-            order.TotalPrice = order.OrderDetails.Sum(orderDetails => orderDetails.Quantity * orderDetails .UnitPrice);
+            order.TotalPrice = order.OrderDetails.Sum(orderDetails => orderDetails.Quantity * orderDetails.UnitPrice);
 
             await _context.SaveChangesAsync();
 
