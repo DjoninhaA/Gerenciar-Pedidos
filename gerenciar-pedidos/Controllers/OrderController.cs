@@ -174,12 +174,22 @@ namespace gerenciar_pedidos.Controllers
 
 
         [HttpGet("orders")]
-        public async Task<IActionResult> GetAllOrders(){
+        public async Task<IActionResult> GetAllOrders(int pageNumber = 1, int pageSize = 10){
             
+            if (pageNumber <= 0 || pageSize <= 0)
+            {
+                return BadRequest("A quantidade de itens por página devem ser maiores que 0");
+            }
+
+            var TotalRecords = await _context.Orders.CountAsync();
+
             var orders = await _context.Orders
             .Include(order => order.OrderDetails)
-            .ThenInclude(details => details.Product)
+            .ThenInclude(orderDetails => orderDetails.Product)
+            .Skip((pageNumber - 1) * pageSize)
+            .Take(pageSize)
             .ToListAsync();
+
 
             var orderDtos = orders.Select(order => new OrderDto
             {
@@ -195,6 +205,17 @@ namespace gerenciar_pedidos.Controllers
                 }).ToList(),
                 TotalPrice = order.OrderDetails.Sum(details => details.Quantity * details.UnitPrice)
             }).ToList();
+
+
+            var paginationResponse = new Pagination<OrderDto>{
+
+                CurrentPage = pageNumber,
+                PageSize = pageSize,
+                TotalRecords = TotalRecords,
+                TotalPages = (int)Math.Ceiling((double)TotalRecords / pageSize),
+                Data = orderDtos
+            };
+
 
             return Ok(orderDtos);
         }

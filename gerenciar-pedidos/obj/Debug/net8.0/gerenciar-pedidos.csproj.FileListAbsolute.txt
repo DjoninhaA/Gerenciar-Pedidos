@@ -137,3 +137,4 @@ C:\Users\djona\Desktop\prog\desafio-tecnico\gerenciar-pedidos\obj\Debug\net8.0\r
 C:\Users\djona\Desktop\prog\desafio-tecnico\gerenciar-pedidos\obj\Debug\net8.0\gerenciar-pedidos.pdb
 C:\Users\djona\Desktop\prog\desafio-tecnico\gerenciar-pedidos\obj\Debug\net8.0\gerenciar-pedidos.genruntimeconfig.cache
 C:\Users\djona\Desktop\prog\desafio-tecnico\gerenciar-pedidos\obj\Debug\net8.0\ref\gerenciar-pedidos.dll
+C:\Users\djona\Desktop\prog\desafio-tecnico\gerenciar-pedidos\obj\Debug\net8.0\gerenciar-pedidos.sourcelink.json
