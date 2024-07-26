@@ -77,4 +77,25 @@ Este projeto é uma aplicação de gerenciamento de pedidos com funcionalidades 
 
 DELETE /orders/{id}
 
-> basta passar o ID que deseja ser deletado
+```
+> Basta passar o ID que deseja ser deletado
+```
+
+## Para criar e listar Produtos:
+
+>POST /products/create
+
+```
+{
+  "productName": "dj",
+  "price": 10,
+  "orderDetails": []
+}
+```
+>GET /products
+
+```
+Basta fazer a requisição a URL e ela vai retornar uma listagem dos produtos cadastrados.
+
+```
+
