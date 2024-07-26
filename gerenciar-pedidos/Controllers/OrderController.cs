@@ -174,23 +174,35 @@ namespace gerenciar_pedidos.Controllers
 
 
         [HttpGet("orders")]
-        public async Task<IActionResult> GetAllOrders(int pageNumber = 1, int pageSize = 10){
+        public async Task<IActionResult> GetAllOrders(bool? isClosed, int pageNumber = 1, int pageSize = 10)
+        {
             
             if (pageNumber <= 0 || pageSize <= 0)
             {
-                return BadRequest("A quantidade de itens por página devem ser maiores que 0");
+                return BadRequest("A quantidade de itens por página deve ser maior que 0.");
             }
 
-            var TotalRecords = await _context.Orders.CountAsync();
+            var query = _context.Orders
+                .Include(order => order.OrderDetails)
+                .ThenInclude(orderDetails => orderDetails.Product)
+                .AsQueryable();
 
-            var orders = await _context.Orders
-            .Include(order => order.OrderDetails)
-            .ThenInclude(orderDetails => orderDetails.Product)
-            .Skip((pageNumber - 1) * pageSize)
-            .Take(pageSize)
-            .ToListAsync();
+            
+            if (isClosed.HasValue)
+            {
+                query = query.Where(order => order.IsClosed == isClosed.Value);
+            }
 
+            
+            var totalRecords = await query.CountAsync();
 
+           
+            var orders = await query
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            
             var orderDtos = orders.Select(order => new OrderDto
             {
                 OrderId = order.OrderId,
@@ -206,19 +218,22 @@ namespace gerenciar_pedidos.Controllers
                 TotalPrice = order.OrderDetails.Sum(details => details.Quantity * details.UnitPrice)
             }).ToList();
 
-
-            var paginationResponse = new Pagination<OrderDto>{
-
+           
+            var paginationResponse = new Pagination<OrderDto>
+            {
                 CurrentPage = pageNumber,
                 PageSize = pageSize,
-                TotalRecords = TotalRecords,
-                TotalPages = (int)Math.Ceiling((double)TotalRecords / pageSize),
+                TotalRecords = totalRecords,
+                TotalPages = (int)Math.Ceiling((double)totalRecords / pageSize),
                 Data = orderDtos
             };
 
-
-            return Ok(orderDtos);
+            return Ok(paginationResponse);
         }
+
+
+
+
 
         [HttpPatch("close/{id}")]
         public async Task<IActionResult> CloseOrder(int id)
